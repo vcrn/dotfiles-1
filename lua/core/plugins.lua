@@ -61,6 +61,8 @@ return require("packer").startup(function(use)
 	use("tyru/open-browser.vim")
 
 	use("alexghergh/nvim-tmux-navigation")
+
+	use("simrat39/rust-tools.nvim")
 	-- My plugins here
 	-- use 'foo1/bar1.nvim'
 	-- use 'foo2/bar2.nvim'

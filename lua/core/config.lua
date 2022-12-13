@@ -1,5 +1,5 @@
-vim.g.mapleader = ' '
-vim.g.maplocalleader = ' '
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
 
 vim.opt.errorbells = false
 vim.opt.tabstop = 2
@@ -27,3 +27,4 @@ vim.opt.cmdheight = 2
 vim.opt.iskeyword:append("-")
 
 vim.opt.clipboard = "unnamedplus"
+vim.wo.signcolumn = "yes"

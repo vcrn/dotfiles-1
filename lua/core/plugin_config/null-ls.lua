@@ -6,6 +6,7 @@ local formatting = null_ls.builtins.formatting
 local sources = {
 	formatting.clang_format,
 	formatting.cmake_format,
+	formatting.rustfmt,
 	formatting.stylua,
 }
 
