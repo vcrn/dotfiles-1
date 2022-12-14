@@ -1,0 +1,55 @@
+# Where should I put you?
+# bindkey -s ^f "tmux-sessionizer\n"
+#bindkey -s ^f "fzf\n"
+#bindkey -s ^f 'file="$(fzf --height 40% --reverse)" && [ -f "$file" ] && xdg-open "$file"\n'
+bindkey -s ^f 'file="$(fzf)" && [ -f "$file" ] && xdg-open "$file"\n'
+bindkey -s ^b 'git checkout $(git branch -a | fzf)\n'
+
+# update automatically ohmyzsh
+zstyle ':omz:update' mode auto
+
+#ara artifactory public key
+export ARA_ARTIFACTORY_API_KEY=AKCp8kq2g2E6tyHuQni6W8TizHyYTfU5hWBYTt9a5oVgNNjUToSTy97xv6pczLNbA4JWTzJfM
+
+#leo artifactory public key
+export LEO_ARTIFACTORY_API_KEY=AKCp8kr1K376wy7vNCgE9xS7ZL28h3mx1G8BApoXgMQZyxtZqMcEWLNqjB2pbWPapQEk3j76g
+
+# Make fzf find "hidden" files
+export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -l -g ""'
+
+# Make vim xdg-open editor
+export EDITOR=vim
+export VISUAL=vim
+
+# set viminit location
+export MYVIMRC='~/.config/nvim/init.lua'
+export VIMINIT='source $MYVIMRC'
+
+# Alias
+alias vpn='f5fpc --start --host https://iconnect.global.volvocars.biz -u hberg2'
+alias ta='tmux attach'
+alias gph='git push origin HEAD:refs/for/master'
+alias set_display='~/settings/scripts/set_displays.sh'
+alias connect_headphones='~/settings/scripts/connect_headphones.sh'
+alias mute='amixer -q -D pulse sset Master toggle'
+alias oldvim="\vim"
+alias vim="nvim"
+
+# functions
+function reload(){
+  source ~/.zshrc
+  # ... add more stuff here
+}
+
+# Messages
+~/settings/scripts/welcome_message.sh
+
+#
+#source ~/Projects/rti_connext_dds-6.1.0/resource/scripts/rtisetenv_x64Linux4gcc7.3.0.zsh
+#if [[ $TERM = screen ]]; then
+    #export TERM=xterm
+#fi
+#
+
+setopt extended_history       # record timestamp of command in HISTFILE
+setopt hist_expire_dups_first # delete duplicates first when HISTFILE size exceeds HISTSIZE

@@ -85,11 +85,6 @@ require("lspconfig").rust_analyzer.setup({
 	on_attach = on_attach,
 	flags = lsp_flags,
 	capabilities = capabilities,
-})
-require("lspconfig").yamlls.setup({
-	on_attach = on_attach,
-	flags = lsp_flags,
-	capabilities = capabilities,
 	settings = {
 		-- to enable rust-analyzer settings visit:
 		-- https://github.com/rust-analyzer/rust-analyzer/blob/master/docs/user/generated_config.adoc
@@ -100,4 +95,9 @@ require("lspconfig").yamlls.setup({
 			},
 		},
 	},
+})
+require("lspconfig").yamlls.setup({
+	on_attach = on_attach,
+	flags = lsp_flags,
+	capabilities = capabilities,
 })
