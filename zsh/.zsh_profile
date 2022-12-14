@@ -8,12 +8,6 @@ bindkey -s ^b 'git checkout $(git branch -a | fzf)\n'
 # update automatically ohmyzsh
 zstyle ':omz:update' mode auto
 
-#ara artifactory public key
-export ARA_ARTIFACTORY_API_KEY=AKCp8kq2g2E6tyHuQni6W8TizHyYTfU5hWBYTt9a5oVgNNjUToSTy97xv6pczLNbA4JWTzJfM
-
-#leo artifactory public key
-export LEO_ARTIFACTORY_API_KEY=AKCp8kr1K376wy7vNCgE9xS7ZL28h3mx1G8BApoXgMQZyxtZqMcEWLNqjB2pbWPapQEk3j76g
-
 # Make fzf find "hidden" files
 export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -l -g ""'
 
