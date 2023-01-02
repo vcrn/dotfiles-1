@@ -15,16 +15,23 @@ vim.opt.hidden = true
 vim.opt.undofile = true
 vim.opt.incsearch = true
 vim.opt.scrolloff = 8
+vim.opt.cursorline = true
 vim.opt.signcolumn = "number"
 
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 
 vim.opt.ttimeoutlen = 100
-vim.opt.cmdheight = 2
+vim.opt.cmdheight = 1
 
 -- string-string is one word
 vim.opt.iskeyword:append("-")
 
 vim.opt.clipboard = "unnamedplus"
 vim.wo.signcolumn = "yes"
+
+vim.cmd("set mouse=")
+vim.cmd("let g:python3_host_prog = '$HOME/.virtualenv/neovim3/bin/python3'")
+
+-- Disable perl
+vim.cmd("let g:loaded_perl_provider = 0")

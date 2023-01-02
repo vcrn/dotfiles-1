@@ -1,17 +1,34 @@
 require("mason").setup()
 require("mason-lspconfig").setup({
-	ensure_installed = { "sumneko_lua", "bashls", "clangd", "cmake", "pyright", "rust_analyzer", "yamlls" },
+	ensure_installed = {
+		-- Language servers
+		"sumneko_lua",
+		"bashls",
+		"clangd",
+		"cmake",
+		"pyright",
+		"rust_analyzer",
+		"yamlls",
+		"marksman",
+		-- Formatters
+		-- "clang-format",
+		-- "rustfmt",
+		-- "stylua",
+		-- "yamlfmt",
+	},
 })
 
-local on_attach = function(_, bufnr)
+local on_attach = function(client, bufnr)
 	vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 
 	local bufopts = { noremap = true, silent = true, buffer = bufnr }
 	vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
 	vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
+	vim.keymap.set("n", "<space>d", vim.diagnostic.open_float, opts)
 	vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, {})
 	vim.keymap.set("n", "<leader>qf", vim.lsp.buf.code_action, {})
 
+	vim.keymap.set("n", "gD", vim.lsp.buf.declaration, bufopts)
 	vim.keymap.set("n", "gd", vim.lsp.buf.definition, {})
 	vim.keymap.set("n", "gi", vim.lsp.buf.implementation, {})
 	vim.keymap.set("n", "gr", require("telescope.builtin").lsp_references, {})
@@ -21,6 +38,7 @@ local on_attach = function(_, bufnr)
 	vim.keymap.set("n", "<space>wl", function()
 		print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
 	end, bufopts)
+	require("lsp-inlayhints").on_attach(client, bufnr)
 end
 
 local lsp_flags = {
@@ -61,11 +79,21 @@ require("lspconfig").clangd.setup({
 	cmd = {
 		-- see clangd --help-hidden
 		"clangd",
+		"--all-scopes-completion",
+		"--suggest-missing-includes",
+		"--background-index",
+		"--pch-storage=disk",
+		"--cross-file-rename",
+		"--log=info",
+		"--completion-style=detailed",
+		"--enable-config", -- clangd 11+ supports reading from .clangd configuration file
+		"--clang-tidy",
+		"--offset-encoding=utf-16", --temporary fix for null-ls
 		-- "--background-index",
 		-- by default, clang-tidy use -checks=clang-diagnostic-*,clang-analyzer-*
 		-- to add more checks, create .clang-tidy file in the root directory
 		-- and add Checks key, see https://clang.llvm.org/extra/clang-tidy/
-		"--clang-tidy",
+		--		"--clang-tidy",
 		-- "--completion-style=bundled",
 		-- "--cross-file-rename",
 		-- "--header-insertion=iwyu",
@@ -97,6 +125,12 @@ require("lspconfig").rust_analyzer.setup({
 	},
 })
 require("lspconfig").yamlls.setup({
+	on_attach = on_attach,
+	flags = lsp_flags,
+	capabilities = capabilities,
+})
+
+require("lspconfig").marksman.setup({
 	on_attach = on_attach,
 	flags = lsp_flags,
 	capabilities = capabilities,

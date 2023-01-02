@@ -29,3 +29,6 @@ vim.keymap.set("n", "<leader>0", ":tablast<cr>", { noremap = true })
 vim.keymap.set("n", "<leader>Q", ":bufdo bwipeout", {})
 
 vim.keymap.set("n", "<leader>ss", ":ClangdSwitchSourceHeader<CR>", {})
+
+-- Ease
+vim.keymap.set("n", "<leader>l", ":nohlsearch<CR>")
