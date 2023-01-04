@@ -8,6 +8,8 @@ local sources = {
 	formatting.cmake_format,
 	formatting.rustfmt,
 	formatting.stylua,
+	formatting.prettierd,
+	formatting.black,
 }
 
 null_ls.setup({

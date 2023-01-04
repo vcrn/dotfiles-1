@@ -10,11 +10,15 @@ require("mason-lspconfig").setup({
 		"rust_analyzer",
 		"yamlls",
 		"marksman",
+		"tsserver",
+		"html",
 		-- Formatters
 		-- "clang-format",
 		-- "rustfmt",
 		-- "stylua",
 		-- "yamlfmt",
+		-- "prettierd"
+		-- "black"
 	},
 })
 
@@ -134,4 +138,17 @@ require("lspconfig").marksman.setup({
 	on_attach = on_attach,
 	flags = lsp_flags,
 	capabilities = capabilities,
+})
+
+require("lspconfig").tsserver.setup({
+	on_attach = on_attach,
+	flags = lsp_flags,
+	capabilities = capabilities,
+})
+
+require("lspconfig").html.setup({
+	on_attach = on_attach,
+	flags = lsp_flags,
+	capabilities = capabilities,
+	provideFormatter = true,
 })
