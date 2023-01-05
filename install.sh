@@ -67,11 +67,9 @@ cp zsh/.zsh_profile ~/
 # Git config
 git config --global core.editor "nvim"
 
-# Install vim plugins
-vim +'PlugInstall --sync' +qa
-vim +'PlugInstall --sync' +qa
-
-# NOT SURE: See if coc have installed all extensions -->
-vim +':CocInstall --sync' +qa
-vim +':CocUpdate --sync' +qa
-
+mkdir -p ~/.virtualenv
+cd ~/.virtualenv
+python3 -m venv neovim3
+source neovim3/bin/activate
+python3 -m pip install pynvim
+deactivate
