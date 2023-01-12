@@ -43,6 +43,9 @@ local on_attach = function(client, bufnr)
 		print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
 	end, bufopts)
 	require("lsp-inlayhints").on_attach(client, bufnr)
+
+	-- Makes the lsp not changing treesitter
+	client.server_capabilities.semanticTokensProvider = nil
 end
 
 local lsp_flags = {
@@ -76,6 +79,7 @@ require("lspconfig").bashls.setup({
 	flags = lsp_flags,
 	capabilities = capabilities,
 })
+
 require("lspconfig").clangd.setup({
 	on_attach = on_attach,
 	flags = lsp_flags,
@@ -84,15 +88,15 @@ require("lspconfig").clangd.setup({
 		-- see clangd --help-hidden
 		"clangd",
 		"--all-scopes-completion",
-		"--suggest-missing-includes",
+		--"--suggest-missing-includes",
 		"--background-index",
 		"--pch-storage=disk",
-		"--cross-file-rename",
+		--"--cross-file-rename",
 		"--log=info",
 		"--completion-style=detailed",
 		"--enable-config", -- clangd 11+ supports reading from .clangd configuration file
 		"--clang-tidy",
-		"--offset-encoding=utf-16", --temporary fix for null-ls
+		--"--offset-encoding=utf-16", --temporary fix for null-ls
 		-- "--background-index",
 		-- by default, clang-tidy use -checks=clang-diagnostic-*,clang-analyzer-*
 		-- to add more checks, create .clang-tidy file in the root directory

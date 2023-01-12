@@ -35,3 +35,5 @@ vim.cmd("let g:python3_host_prog = '$HOME/.virtualenv/neovim3/bin/python3'")
 
 -- Disable perl
 vim.cmd("let g:loaded_perl_provider = 0")
+
+--vim.lsp.set_log_level("debug")

@@ -1,5 +1,5 @@
 vim.o.termguicolors = true
-vim.cmd([[ 
+vim.cmd([[
  " Important!!
         " For dark version.
         set background=dark
@@ -11,3 +11,4 @@ vim.cmd([[
         let g:gruvbox_material_better_performance = 1
         colorscheme gruvbox-material
 ]])
+--vim.o.background = "dark" -- or "light" for light mode

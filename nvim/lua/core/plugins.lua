@@ -41,7 +41,7 @@ return require("packer").startup(function(use)
 		use({ "L3MON4D3/LuaSnip", run = "make install_jsregexp", tag = "v<CurrentMajor>.*" }),
 	})
 
-	use("mfussenegger/nvim-lint")
+	--use("mfussenegger/nvim-lint")
 
 	use("jose-elias-alvarez/null-ls.nvim")
 
@@ -58,8 +58,6 @@ return require("packer").startup(function(use)
 			require("Comment").setup()
 		end,
 	})
-
-	use("tyru/open-browser.vim")
 
 	use("alexghergh/nvim-tmux-navigation")
 
