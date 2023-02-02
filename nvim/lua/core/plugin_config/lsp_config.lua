@@ -116,7 +116,15 @@ require("lspconfig").pyright.setup({
 	on_attach = on_attach,
 	flags = lsp_flags,
 	capabilities = capabilities,
+	settings = {
+		python = {
+			analysis = {
+				extraPaths = { "path/to/desired/local/modules", }
+			}
+		}
+	}
 })
+
 require("lspconfig").rust_analyzer.setup({
 	on_attach = on_attach,
 	flags = lsp_flags,
